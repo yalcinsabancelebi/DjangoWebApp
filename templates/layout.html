@@ -1,0 +1,39 @@
+<!--bu sayfa her samana html sayfaların en üstünde olacak kısımlar için-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"></link>
+    <title>Yalçın Şabançelebi</title>
+</head>
+<body>
+    {% include "includes/navbar.html" %}
+    
+    <div class="container" style="margin-bottom:50px">
+        
+        <!--bootstrap alert ile mesaj yazdırma-->
+        <!--django da alert mesajı olmadığı için info mesajı olduğunda onu alert gibi gösterebliriz.info dısışındaki mesajlar ne mesajıysa o şekşlde görnmeye devam edecek else sayesinde-->
+        {% if messages %}
+            {% for message in messages %}
+            {% if message.tags == 'info' %}
+            <div class="alert alert-danger">{{message}}</div>
+            {% else %}
+            <div class="alert alert-{{message.tags}}">{{message}}</div>
+            {% endif %}
+            {% endfor %}
+        {% endif %}
+
+
+        {% block body %}
+        <!--bu bir inheritance(miras) örneği. buranın içi dinamik ve sonradan dolacak-->
+        {% endblock body %}
+    </div>
+    <script src="{% static 'js/jquery-3.4.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script> 
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!--sıra önemli-->
+</body>
+</html>

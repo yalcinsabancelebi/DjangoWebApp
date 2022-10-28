@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+{% load crispy_forms_tags %} <!--django crispy dokümanında yazan load işlemiyle django ya bunu kullanacağımızı söylüyoruz-->
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3"> <!--bootstrap-->  
+            <br>
+            <h3>Makale Oluştur</h3>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                <!--{{form.as_p}}--> <!--formu sayfada göstermek için as_p kullanılır--> 
+                {{form.media}}
+                {{ form|crispy }} <!--django crispy yi çalıştırmak için bunu yapmamız gerekiyor-->
+                <br>
+                <button type="submit" class="btn btn-danger">Yayımla</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock body %}
+
