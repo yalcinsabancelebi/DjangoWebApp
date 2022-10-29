@@ -6,7 +6,7 @@
     <hr>
     <p>Hoşgeldiniz, <small>{{request.user.username}}</small></p>
     <hr>
-    <a class="btn btn-danger" href="/articles/addarticle">Makale Ekle</a>
+    <a class="btn btn-danger" href="{% url 'article:addarticle' %}">Makale Ekle</a>
     <hr>
 
     {% if articles %}
@@ -29,8 +29,8 @@
                 <td><a href="/articles/article/{{article.id}}">{{article.title}}</a></td>
                 <td>{{article.author.username}}</td>
                 <td>@{{article.created_date}}</td>
-                <td><a href="/articles/update/{{article.id}}" class="btn btn-info">Güncelle</a></td>
-                <td><a href="/articles/delete/{{article.id}}" class="btn btn-danger">Sil</a></td>
+                <td><a href="{% url 'article:update' article.id %}" class="btn btn-info">Güncelle</a></td>
+                <td><a href="{% url 'article:delete' article.id %}" class="btn btn-danger">Sil</a></td>
               </tr>
             {% endfor %}
         </tbody>

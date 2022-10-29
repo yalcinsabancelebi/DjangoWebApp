@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path,include
 from article.views import index #article/views de oluşturduğumuz sınıfı burada çağırmak için import ettik
 from article import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,3 +28,4 @@ urlpatterns = [
     path('articles/',include("article.urls")),  #böyle bir istek olduğunda sonradan oluşturulan farklı bir url dosyasına yönlendirebiliyoruz
     path('user/',include("user.urls")), #yani burda user/login, user/register, user/logout gibi user klasörünün içindeki urls dosyasında bulunan def tetiklenirse çalışcak
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

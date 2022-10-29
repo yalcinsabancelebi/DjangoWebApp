@@ -15,13 +15,14 @@
                 <hr>
             </header>
             <!-- Preview image figure-->
-            <!--<figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>-->
+            {% if article.article_image %} <!--resim varsa resmin kaynağını ayarla-->
+            <figure class="mb-4"><img class="img-fluid rounded" src="{{article.article_image.url}}" alt="..." /></figure>
+            {% endif %}
             <!-- Post content-->
             <section class="mb-5">
-                <p class="fs-5 mb-4">{{article.content}}</p>
+                <p class="fs-5 mb-4">{{article.content|safe}}</p> <!-- |safe etiketi içeriğin html olarak görünmesini engeller-->
             </section>
         </article>
-    </div>
     </div>
 </div>
 

@@ -9,6 +9,7 @@ class Article(models.Model):
     title=models.CharField(max_length=20,verbose_name="Başlık")
     content=RichTextField()
     created_date=models.DateTimeField(auto_now_add=True,verbose_name="Oluşturma Tarihi")
+    article_image=models.FileField(blank=True, null=True, verbose_name="Makaleye resim ekleyin")
 
     def __str__(self):
         return self.title #article başlığını özel str methoduyla istenilen şekilde gösterme
